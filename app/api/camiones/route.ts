@@ -5,7 +5,7 @@ import { type Prisma } from "@prisma/client";
 export async function GET() {
   try {
     const camiones = await db.camion.findMany({ include: { chofer: true } });
-    return NextResponse.json({ camiones });
+    return NextResponse.json(camiones);
   } catch (error: any) {
     return NextResponse.json({ error: error.message });
   }

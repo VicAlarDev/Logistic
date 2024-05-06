@@ -22,6 +22,7 @@ import { ConductorSchema } from "./conductor.schema";
 import axios from "axios";
 import { AlertModal } from "@/components/modal/alert-modal";
 import { cn } from "@/lib/utils";
+import { useCreateConductor, useUpdateConductor } from "@/hooks/query";
 
 type ConductorFormValues = z.infer<typeof ConductorSchema>;
 
@@ -61,19 +62,17 @@ export const ConductorForm: React.FC<ConductorFormProps> = ({
     defaultValues,
   });
 
+  const createConductor = useCreateConductor();
+  const updateConductor = useUpdateConductor();
+
   const onSubmit = async (data: ConductorFormValues) => {
     try {
       setLoading(true);
       if (initialData) {
-        await axios.put(
-          `http://localhost:3000/api/conductores/${initialData.id}`,
-          data,
-        );
+        updateConductor.mutate({ id: initialData.id, info: data });
       } else {
-        await axios.post(`http://localhost:3000/api/conductores`, data);
+        createConductor.mutate(data);
       }
-      router.refresh();
-      router.push(`/dashboard/conductor`);
       toast({
         variant: "default",
         title: toastMessage,

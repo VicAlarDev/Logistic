@@ -143,7 +143,7 @@ export const navItems: NavItem[] = [
     icon: "dashboard",
     label: "Dashboard",
   },
-  {
+  /*   {
     title: "User",
     href: "/dashboard/user",
     icon: "user",
@@ -154,7 +154,7 @@ export const navItems: NavItem[] = [
     href: "/dashboard/employee",
     icon: "employee",
     label: "employee",
-  },
+  }, */
   {
     title: "Conductores",
     href: "/dashboard/conductor",
@@ -168,6 +168,12 @@ export const navItems: NavItem[] = [
     label: "vehiculos",
   },
   {
+    title: "Registrar Repuestos",
+    href: "/dashboard/repuestos",
+    icon: "wrench",
+    label: "repuestos",
+  },
+  {
     title: "Profile",
     href: "/dashboard/profile",
     icon: "profile",
@@ -179,10 +185,10 @@ export const navItems: NavItem[] = [
     icon: "kanban",
     label: "kanban",
   },
-  {
+  /*   {
     title: "Login",
     href: "/",
     icon: "login",
     label: "login",
-  },
+  }, */
 ];

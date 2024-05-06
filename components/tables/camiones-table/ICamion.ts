@@ -15,6 +15,7 @@ interface Vehiculo {
   year: number;
   color: string;
   peso: number;
+  tipoVehiculo: string;
   volumen: number;
   conductorId: number;
   chofer: Chofer;

@@ -35,10 +35,7 @@ export default async function page({
     <ScrollArea className="h-full">
       <div className="flex-1 space-y-4 p-5">
         <BreadCrumb items={breadcrumbItems} />
-        <VehiculoForm
-          initialData={initialData}
-          conductores={conductores.conductores}
-        />
+        <VehiculoForm initialData={initialData} conductores={conductores} />
       </div>
     </ScrollArea>
   );

@@ -31,6 +31,7 @@ import {
   Truck,
   BookUser,
   X,
+  Wrench,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -39,6 +40,7 @@ export const Icons = {
   dashboard: LayoutDashboardIcon,
   logo: Command,
   login: LogIn,
+  wrench: Wrench,
   truck: Truck,
   chofer: BookUser,
   close: X,

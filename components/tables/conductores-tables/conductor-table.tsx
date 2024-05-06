@@ -6,8 +6,8 @@ import { Separator } from "@/components/ui/separator";
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { columns } from "./columns";
-import { useFetchData } from "@/hooks/useFetch";
 import type { Conductor } from "@prisma/client";
+import { useFetchConductores } from "@/hooks/query";
 
 type ConductorResponse = {
   conductores: Conductor[];
@@ -16,22 +16,17 @@ type ConductorResponse = {
 export const ConductorTabla: React.FC = () => {
   const router = useRouter();
 
-  const { data, isLoading } = useFetchData<ConductorResponse>(
-    "http://localhost:3000/api/conductores",
-    ["conductores"],
-  );
-
-  const conductores = data?.conductores;
+  const { data: conductores, isLoading } = useFetchConductores();
 
   if (isLoading) return <div>Cargando...</div>;
 
-  if (!data) return <div>No hay conductores</div>;
+  if (!conductores) return <div>No hay conductores</div>;
 
   return (
     <>
       <div className="flex items-start justify-between">
         <Heading
-          title={`Conductores (${data.conductores.length})`}
+          title={`Conductores (${conductores.length})`}
           description="Crea, modifica y elimina conductores."
         />
         <Button

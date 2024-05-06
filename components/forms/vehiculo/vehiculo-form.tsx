@@ -35,7 +35,7 @@ type VehiculoFormValues = z.infer<typeof VehiculoSchema>;
 
 interface VehiculoFormProps {
   initialData: any | null;
-  conductores: Conductor[];
+  conductores: Conductor[] | undefined;
 }
 
 export const VehiculoForm: React.FC<VehiculoFormProps> = ({
@@ -285,7 +285,7 @@ export const VehiculoForm: React.FC<VehiculoFormProps> = ({
                           placeholder="Selecciona un conductor"
                         />
                       </SelectTrigger>
-                    </FormControl> 
+                    </FormControl>
                     <SelectContent>
                       {/* @ts-ignore  */}
                       {conductores.map((conductor) => (

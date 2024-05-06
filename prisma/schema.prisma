@@ -66,13 +66,44 @@ model Conductor {
 
 model Camion {
   id          Int   @id @default(autoincrement())
-  placa   String
+  placa   String @unique
   marca      String
   modelo       String
   year       Int
   color     String
   peso       Int
+  tipoVehiculo     String?
   volumen      Int
   conductorId Int
+  registros    RegistroRepuesto[]
   chofer Conductor @relation(fields: [conductorId], references: [id])
 }
+
+model Repuesto {
+  id              Int       @id @default(autoincrement())
+  nombre          String
+  marca           String
+  fechaFabricacion DateTime
+  serial          String
+  precio           Float?
+  descripcion    String?
+  categoriaId     Int
+  categoria       Categoria @relation(fields: [categoriaId], references: [id])
+  registros       RegistroRepuesto[]
+}
+
+model Categoria {
+  id       Int       @id @default(autoincrement())
+  nombre   String
+  repuestos Repuesto[]
+}
+
+model RegistroRepuesto {
+  id         Int      @id @default(autoincrement())
+  vehiculoPlaca  String
+  repuestoId  Int
+  fechaInstalacion DateTime
+  camion    Camion @relation(fields: [vehiculoPlaca], references: [placa])
+  repuesto    Repuesto @relation(fields: [repuestoId], references: [id])
+}
+
